@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/Betweenness_Centrality/Test" enctype="multipart/form-data" method="post">
-    <input type="file" name="record" />
+<form action="Calculate_Centrality">
+    <input type="input" name="input_path" />
     <input type="submit" />
 </form>
 </body>
