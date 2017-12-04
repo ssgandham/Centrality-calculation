@@ -1,0 +1,73 @@
+<html>
+<head>
+  <title>p2p-graph example</title>
+  <style>
+    .torrent-graph {
+      width: 50%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>p2p-graph example</h2>
+  <div class="torrent-graph"></div>
+
+  <script type="text/javascript" src="./p2p-graph.min.js"></script>
+  <script>
+  let graph = new window.P2PGraph('.torrent-graph')
+  graph.add({
+    id: '0',
+    me: false,
+    name: 'Vertex 1 : 3.5'
+  })
+  graph.add({
+    id: '1',
+    me: false,
+    name: 'Vertex 2 : 1.0'
+  })
+  graph.add({
+    id: '2',
+    me: false,
+    name: 'Vertex 3 : 28.0'
+  })
+  graph.add({
+    id: '3',
+    me: false,
+    name: 'Vertex 4 : 3.5'
+  })
+  graph.add({
+    id: '4',
+    me: false,
+    name: 'Vertex 5 : 0.0'
+  })
+  graph.add({
+    id: '5',
+    me: false,
+    name: 'Vertex 6 : 0.0'
+  })
+
+  // graph.connect('You','Thing1')
+  // graph.connect('Thing1','Thing2')
+  // graph.connect('Thing2','Thing1')
+  // graph.connect('Thing2','You')
+
+graph.connect('0','1')
+graph.connect('0','2')
+graph.connect('1','0')
+graph.connect('1','3')
+graph.connect('2','0')
+graph.connect('2','3')
+graph.connect('2','4')
+graph.connect('2','5')
+graph.connect('3','1')
+graph.connect('3','2')
+graph.connect('4','2')
+graph.connect('4','5')
+graph.connect('5','2')
+graph.connect('5','4')
+
+  graph.list()
+  </script>
+</body>
+</html>
