@@ -59,6 +59,7 @@ public class Calculate_Centrality extends HttpServlet {
                 g.edge_add(Integer.parseInt(edges[0]), Integer.parseInt(edges[1]));
             }
             g.traverse();
+            g.closeness_centrality();
             //            response.sendRedirect("Display_Graph.jsp");
             Map<Integer, Float> map = new HashMap<>();
             for (int i = 0; i < g.CB.length; i++)
@@ -77,7 +78,7 @@ public class Calculate_Centrality extends HttpServlet {
             out.println("</head>");
 
             out.println("<body>");
-            out.println("<h2>p2p-graph example</h2>");
+            out.println("<h2>Betweenness Centrality</h2>");
             out.println("<div class=\"torrent-graph\"></div>");
 
             out.println("<script type=\"text/javascript\" src=\"./p2p-graph.min.js\"></script>");

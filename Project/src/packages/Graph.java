@@ -14,6 +14,9 @@ class Graph {
     Stack<Integer> st = new Stack<Integer>();
     static int sigma[], dist[];
     Queue<Integer> q = new LinkedList<Integer>();
+    int[] arr_dist = new int[100000];
+    static int[][] shortest_path_dist;
+    static float[] closeness_centrality;
 
     // Constructor
     Graph(int v) {
@@ -24,6 +27,8 @@ class Graph {
         sigma = new int[v];
         dist = new int[v];
         delta = new float[v];
+        shortest_path_dist = new int[v][v];
+        closeness_centrality = new float[v];
         for (int i = 0; i < v; ++i) {
             adj[i] = new LinkedList<Integer>();
             pred[i] = new LinkedList<Integer>();
@@ -99,10 +104,25 @@ class Graph {
                 }
             }
             //            System.out.println("i :" + i);
-
+            shortest_path_dist[src] = dist;
         }
+
         for (float cb_tmp : CB)
             System.out.println(cb_tmp);
+    }
+
+    public void closeness_centrality() {
+        for (int i = 0; i < V; i++) {
+            for (int j = 0; j < V; j++) {
+                closeness_centrality[i] += shortest_path_dist[i][j];
+            }
+            System.out.println("i:" + i + closeness_centrality[i]);
+            closeness_centrality[i] = 1 / closeness_centrality[i];
+        }
+
+        System.out.println("Centrality");
+        for (int m = 0; m < V; m++)
+            System.out.println("m : " + closeness_centrality[m]);
     }
 
     public static void main(String[] args) {
@@ -123,12 +143,6 @@ class Graph {
         graph.edge_add(5, 2);
         graph.edge_add(5, 4);
         graph.traverse();
-
-        //        for (LinkedList<Integer> tmp : pred) {
-        //
-        //                        System.out.println(tmp);
-        //
-        //        }
 
     }
 

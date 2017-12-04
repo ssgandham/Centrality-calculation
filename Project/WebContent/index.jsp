@@ -9,7 +9,12 @@
 <body>
 <form action="Calculate_Centrality">
     <input type="input" name="input_path" />
-    <input type="submit" />
+    <input type="submit" value="Betweeness Centrality" />
+</form>
+
+<form action="Calculate_Closeness_Centrality">
+    <input type="input" name="input_path" />
+    <input type="submit" value="Closeness Centrality" />
 </form>
 </body>
 </html>
