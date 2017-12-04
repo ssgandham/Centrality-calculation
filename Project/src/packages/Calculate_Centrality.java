@@ -113,20 +113,26 @@ public class Calculate_Centrality extends HttpServlet {
             out.println("me: false,");
             out.println("name: 'Vertex 6 : " + map.get(vertex++) + "'");
             out.println("})");
-            out.println("graph.connect('0','1')");
-            out.println("graph.connect('0','2')");
-            out.println("graph.connect('1','0')");
-            out.println("graph.connect('1','3')");
-            out.println("graph.connect('2','0')");
-            out.println("graph.connect('2','3')");
-            out.println("graph.connect('2','4')");
-            out.println("graph.connect('2','5')");
-            out.println("graph.connect('3','1')");
-            out.println("graph.connect('3','2')");
-            out.println("graph.connect('4','2')");
-            out.println("graph.connect('4','5')");
-            out.println("graph.connect('5','2')");
-            out.println("graph.connect('5','4')");
+
+            br = new BufferedReader(new FileReader(path));
+            while ((line = br.readLine()) != null) {
+                String[] edges = line.split(" ");
+                out.println("graph.connect('" + edges[0] + "','" + edges[1] + "')");
+            }
+            //            out.println("graph.connect('0','1')");
+            //            out.println("graph.connect('0','2')");
+            //            out.println("graph.connect('1','0')");
+            //            out.println("graph.connect('1','3')");
+            //            out.println("graph.connect('2','0')");
+            //            out.println("graph.connect('2','3')");
+            //            out.println("graph.connect('2','4')");
+            //            out.println("graph.connect('2','5')");
+            //            out.println("graph.connect('3','1')");
+            //            out.println("graph.connect('3','2')");
+            //            out.println("graph.connect('4','2')");
+            //            out.println("graph.connect('4','5')");
+            //            out.println("graph.connect('5','2')");
+            //            out.println("graph.connect('5','4')");
 
             out.println("graph.list()");
             out.println("</script>");
