@@ -36,7 +36,7 @@ public class Calculate_Centrality extends HttpServlet {
             throws ServletException, IOException {
         // TODO Auto-generated method stub
         //		response.getWriter().append("Served at: ").append(request.getContextPath());
-        Graph g = new Graph(6);
+        Graph g = new Graph(30000);
 
         /*Reference : https://www.mkyong.com/java/how-to-read-and-parse-csv-file-in-java/*/
         String path = request.getParameter("input_path");
@@ -46,7 +46,8 @@ public class Calculate_Centrality extends HttpServlet {
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = " ";
-
+        if (request.getParameter("Calculate_Centrality").toString().equals("weight"))
+            System.out.println("Weight has been checked");
         try {
 
             br = new BufferedReader(new FileReader(path));
@@ -59,7 +60,7 @@ public class Calculate_Centrality extends HttpServlet {
                 g.edge_add(Integer.parseInt(edges[0]), Integer.parseInt(edges[1]));
             }
             g.traverse();
-            g.closeness_centrality();
+            //            g.closeness_centrality();
             //            response.sendRedirect("Display_Graph.jsp");
             Map<Integer, Float> map = new HashMap<>();
             for (int i = 0; i < g.CB.length; i++)
@@ -71,7 +72,7 @@ public class Calculate_Centrality extends HttpServlet {
             out.println("<title>p2p-graph example</title>");
             out.println("<style>");
             out.println(".torrent-graph {");
-            out.println(" width: 50%;");
+            out.println(" width: 100%;");
             out.println("  height: 100%;");
             out.println("}");
             out.println("</style>");

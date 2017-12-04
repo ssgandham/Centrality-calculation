@@ -15,16 +15,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Calculate_Closeness_Centrality
+ * Servlet implementation class Calculate_Degree_Centrality
  */
-@WebServlet("/Calculate_Closeness_Centrality")
-public class Calculate_Closeness_Centrality extends HttpServlet {
+@WebServlet("/Calculate_Degree_Centrality")
+public class Calculate_Degree_Centrality extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Calculate_Closeness_Centrality() {
+    public Calculate_Degree_Centrality() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,7 +36,7 @@ public class Calculate_Closeness_Centrality extends HttpServlet {
             throws ServletException, IOException {
         // TODO Auto-generated method stub
         //		response.getWriter().append("Served at: ").append(request.getContextPath());
-        Graph_Closeness_Centrality g = new Graph_Closeness_Centrality(6);
+        Graph g = new Graph(6);
 
         /*Reference : https://www.mkyong.com/java/how-to-read-and-parse-csv-file-in-java/*/
         String path = request.getParameter("input_path");
@@ -58,17 +58,19 @@ public class Calculate_Closeness_Centrality extends HttpServlet {
                 //                System.out.print("Country [code= " + country[0] + " , name=" + country[1] + "]");
                 g.edge_add(Integer.parseInt(edges[0]), Integer.parseInt(edges[1]));
             }
-            //            g.traverse();
-            g.closeness_centrality();
+
             //            response.sendRedirect("Display_Graph.jsp");
-            Map<Integer, Float> map = new HashMap<>();
-            for (int i = 0; i < g.closeness_centrality.length; i++)
-                map.put(i, g.closeness_centrality[i]);
+
+            g.degree_centrality();
+            Map<Integer, Integer> map = new HashMap<>();
+            for (int i = 0; i < g.V; i++)
+                map.put(i, g.degree_centrality.get(i));
+
             int vertex = 0;
             PrintWriter out = response.getWriter();
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Closeness Centrality</title>");
+            out.println("<title>Degree Centrality</title>");
             out.println("<style>");
             out.println(".torrent-graph {");
             out.println(" width: 100%;");
@@ -78,7 +80,7 @@ public class Calculate_Closeness_Centrality extends HttpServlet {
             out.println("</head>");
 
             out.println("<body>");
-            out.println("<h2>Closeness Centrality</h2>");
+            out.println("<h2>Degree Centrality</h2>");
             out.println("<div class=\"torrent-graph\"></div>");
 
             out.println("<script type=\"text/javascript\" src=\"./p2p-graph.min.js\"></script>");
@@ -142,7 +144,6 @@ public class Calculate_Closeness_Centrality extends HttpServlet {
 
             for (float tmp : g.CB)
                 System.out.println(tmp);
-
         } catch (
 
         FileNotFoundException e) {
