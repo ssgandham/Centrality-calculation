@@ -8,20 +8,25 @@
 </head>
 <body>
 	<form action="Calculate_Centrality">
-		<input type="checkbox" name="Calculate_Centrality" value="weight">
-		Weight<br> <input type="input" name="input_path" /> <input
-			type="submit" value="Betweeness Centrality" /><br> <br>
+		<!-- <input type="checkbox" name="Calculate_Centrality" value="weight"> -->
+		<a href="https://en.wikipedia.org/wiki/Betweenness_centrality">
+			What's Betweenness Centrality ???</a><br> <br> <input
+			type="input" name="input_path" /> <input type="submit"
+			value="Betweeness Centrality" /><br> <br>
 	</form>
 
 	<form action="Calculate_Closeness_Centrality">
-		<input type="checkbox" name="Calculate_Centrality" value="weight">
-		Weight<br> <input type="input" name="input_path" /> <input
+		<!-- <input type="checkbox" name="Calculate_Centrality" value="weight"> -->
+		<a href="https://en.wikipedia.org/wiki/Closeness_centrality">
+			What's Closeness Centrality ??? <br>
+		</a> <br> <input type="input" name="input_path" /> <input
 			type="submit" value="Closeness Centrality" />
-	</form>
-	
+	</form><br>
+
 	<form action="Calculate_Degree_Centrality">
-		<input type="checkbox" name="Calculate_Centrality" value="weight">
-		Weight<br> <input type="input" name="input_path" /> <input
+		<!-- <input type="checkbox" name="Calculate_Centrality" value="weight"> -->
+		<a href="https://en.wikipedia.org/wiki/Centrality#Degree_centrality"> What's Degree Centrality ??? </a><br>
+		<br> <input type="input" name="input_path" /> <input
 			type="submit" value="Degree Centrality" />
 	</form>
 </body>
