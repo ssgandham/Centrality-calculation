@@ -38,8 +38,8 @@ public class Calculate_Centrality extends HttpServlet {
         //		response.getWriter().append("Served at: ").append(request.getContextPath());
 
         /*Reference : https://www.mkyong.com/java/how-to-read-and-parse-csv-file-in-java/*/
-        String path = request.getParameter("input_path");
-        System.out.print(path);
+        Graph_Declarations.path = request.getParameter("input_path");
+        System.out.print(Graph_Declarations.path);
 
         //        Map<Integer, Integer> map_vertices = new HashMap<>();
         int no_vertices = 0;
@@ -52,7 +52,7 @@ public class Calculate_Centrality extends HttpServlet {
         //            System.out.println("Weight has been checked");
         try {
 
-            br = new BufferedReader(new FileReader(path));
+            br = new BufferedReader(new FileReader(Graph_Declarations.path));
             while ((line = br.readLine()) != null) {
 
                 // use comma as separator
@@ -78,7 +78,7 @@ public class Calculate_Centrality extends HttpServlet {
             Graph g = new Graph(Graph_Declarations.no_of_vertices);
             Graph_Declarations g_declare = new Graph_Declarations(Graph_Declarations.no_of_vertices);
 
-            br = new BufferedReader(new FileReader(path));
+            br = new BufferedReader(new FileReader(Graph_Declarations.path));
             while ((line = br.readLine()) != null) {
 
                 // use comma as separator
@@ -154,7 +154,7 @@ public class Calculate_Centrality extends HttpServlet {
             //            out.println("name: 'Vertex 6 : " + map.get(vertex++) + "'");
             //            out.println("})");
 
-            br = new BufferedReader(new FileReader(path));
+            br = new BufferedReader(new FileReader(Graph_Declarations.path));
             while ((line = br.readLine()) != null) {
                 String[] edges = line.split(" ");
                 out.println("graph.connect('" + Graph_Declarations.map_vertices.get(edges[0]) + "','"
