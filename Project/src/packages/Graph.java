@@ -24,6 +24,7 @@ class Graph {
 
     // Constructor
     Graph(int v) {
+        System.out.println("V : " + v);
         V = v;
         adj = new LinkedList[v];
         pred = new LinkedList[v];
@@ -51,7 +52,8 @@ class Graph {
     }
 
     public void edge_add(int src, int dest) {
-        adj[src].add(dest);
+        if (!adj[src].contains(dest))
+            adj[src].add(dest);
     }
 
     public void init(int src) {
@@ -146,7 +148,7 @@ class Graph {
 
     public static void main(String[] args) {
         // TODO Auto-generated method stub
-        Graph graph = new Graph(6);
+        Graph graph = new Graph(100);
         //        graph.edge_add(0, 1);
         //        graph.edge_add(0, 2);
         //        graph.edge_add(1, 0);

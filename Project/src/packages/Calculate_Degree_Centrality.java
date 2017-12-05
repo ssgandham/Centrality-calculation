@@ -36,7 +36,7 @@ public class Calculate_Degree_Centrality extends HttpServlet {
             throws ServletException, IOException {
         // TODO Auto-generated method stub
         //		response.getWriter().append("Served at: ").append(request.getContextPath());
-        Graph g = new Graph(6);
+        Graph g = new Graph(Graph_Declarations.no_of_vertices);
 
         /*Reference : https://www.mkyong.com/java/how-to-read-and-parse-csv-file-in-java/*/
         String path = request.getParameter("input_path");
