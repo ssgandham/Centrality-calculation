@@ -36,7 +36,7 @@ public class Calculate_Closeness_Centrality extends HttpServlet {
             throws ServletException, IOException {
         // TODO Auto-generated method stub
         //		response.getWriter().append("Served at: ").append(request.getContextPath());
-        Graph_Closeness_Centrality g = new Graph_Closeness_Centrality(6);
+        Graph g = new Graph(6);
 
         /*Reference : https://www.mkyong.com/java/how-to-read-and-parse-csv-file-in-java/*/
         String path = request.getParameter("input_path");
@@ -58,7 +58,7 @@ public class Calculate_Closeness_Centrality extends HttpServlet {
                 //                System.out.print("Country [code= " + country[0] + " , name=" + country[1] + "]");
                 g.edge_add(Integer.parseInt(edges[0]), Integer.parseInt(edges[1]));
             }
-            //            g.traverse();
+            g.traverse();
             g.closeness_centrality();
             //            response.sendRedirect("Display_Graph.jsp");
             Map<Integer, Float> map = new HashMap<>();

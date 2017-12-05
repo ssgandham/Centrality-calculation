@@ -36,7 +36,7 @@ public class Calculate_Centrality extends HttpServlet {
             throws ServletException, IOException {
         // TODO Auto-generated method stub
         //		response.getWriter().append("Served at: ").append(request.getContextPath());
-        Graph g = new Graph(30000);
+        Graph g = new Graph(6);
 
         /*Reference : https://www.mkyong.com/java/how-to-read-and-parse-csv-file-in-java/*/
         String path = request.getParameter("input_path");
@@ -46,8 +46,8 @@ public class Calculate_Centrality extends HttpServlet {
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = " ";
-        if (request.getParameter("Calculate_Centrality").toString().equals("weight"))
-            System.out.println("Weight has been checked");
+        //        if (request.getParameter("Calculate_Centrality").toString().equals("weight"))
+        //            System.out.println("Weight has been checked");
         try {
 
             br = new BufferedReader(new FileReader(path));
