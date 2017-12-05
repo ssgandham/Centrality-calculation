@@ -1,8 +1,6 @@
 package packages;
 
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -10,7 +8,6 @@ class Graph {
     static int V; // No. of vertices
     static float delta[], CB[];
     // Array  of lists for Adjacency List Representation
-    static LinkedList<Integer> adj[];
 
     static LinkedList<Integer> pred[];
     Stack<Integer> st = new Stack<Integer>();
@@ -20,13 +17,12 @@ class Graph {
     static int[][] shortest_path_dist;
     static float[] closeness_centrality;
     float[] matrix_weight;
-    static Map<Integer, Integer> degree_centrality = new HashMap<>();
 
     // Constructor
     Graph(int v) {
         System.out.println("V : " + v);
         V = v;
-        adj = new LinkedList[v];
+        Graph_Declarations.adj = new LinkedList[v];
         pred = new LinkedList[v];
         CB = new float[v];
         sigma = new int[v];
@@ -37,7 +33,7 @@ class Graph {
         closeness_centrality = new float[v];
 
         for (int i = 0; i < v; ++i) {
-            adj[i] = new LinkedList<Integer>();
+            Graph_Declarations.adj[i] = new LinkedList<Integer>();
             pred[i] = new LinkedList<Integer>();
             sigma[i] = 0;
             dist[i] = -1;
@@ -52,8 +48,8 @@ class Graph {
     }
 
     public void edge_add(int src, int dest) {
-        if (!adj[src].contains(dest))
-            adj[src].add(dest);
+        if (!Graph_Declarations.adj[src].contains(dest))
+            Graph_Declarations.adj[src].add(dest);
     }
 
     public void init(int src) {
@@ -87,7 +83,7 @@ class Graph {
             while (!q.isEmpty()) {
                 int vertex = q.poll();
                 st.push(vertex);
-                for (int neigh : adj[vertex]) {
+                for (int neigh : Graph_Declarations.adj[vertex]) {
                     if (dist[neigh] < 0) {
                         q.add(neigh);
                         dist[neigh] = dist[vertex] + 1;
@@ -123,10 +119,10 @@ class Graph {
     }
 
     public void degree_centrality() {
-        for (int i = 0; i < adj.length; i++) {
+        for (int i = 0; i < Graph_Declarations.adj.length; i++) {
             //            for (int tmp_list : adj[i])
-            degree_centrality.put(i, adj[i].size());
-            Graph_Declarations.total_centrality[i] += adj[i].size();
+            Graph_Declarations.degree_centrality.put(i, Graph_Declarations.adj[i].size());
+            Graph_Declarations.total_centrality[i] += Graph_Declarations.adj[i].size();
         }
     }
 

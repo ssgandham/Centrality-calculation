@@ -64,7 +64,7 @@ public class Calculate_Degree_Centrality extends HttpServlet {
             g.degree_centrality();
             Map<Integer, Integer> map = new HashMap<>();
             for (int i = 0; i < g.V; i++)
-                map.put(i, g.degree_centrality.get(i));
+                map.put(i, Graph_Declarations.degree_centrality.get(i));
 
             int vertex = 0;
             PrintWriter out = response.getWriter();
@@ -73,8 +73,8 @@ public class Calculate_Degree_Centrality extends HttpServlet {
             out.println("<title>Degree Centrality</title>");
             out.println("<style>");
             out.println(".torrent-graph {");
-            out.println(" width: 100%;");
-            out.println("  height: 100%;");
+            out.println(" width: 200%;");
+            out.println("  height: 200%;");
             out.println("}");
             out.println("</style>");
             out.println("</head>");
@@ -86,41 +86,48 @@ public class Calculate_Degree_Centrality extends HttpServlet {
             out.println("<script type=\"text/javascript\" src=\"./p2p-graph.min.js\"></script>");
             out.println("<script>");
             out.println("let graph = new window.P2PGraph('.torrent-graph')");
-            out.println("graph.add({");
-            out.println("id: '0',");
-            out.println("me: false,");
-            out.println("name: 'Vertex 1 : " + map.get(vertex++) + "'");
-            out.println(" })");
-            out.println("graph.add({");
-            out.println("id: '1',");
-            out.println("me: false,");
-            out.println("name: 'Vertex 2 : " + map.get(vertex++) + "'");
-            out.println("})");
-            out.println("graph.add({");
-            out.println("id: '2',");
-            out.println("me: false,");
-            out.println("name: 'Vertex 3 : " + map.get(vertex++) + "'");
-            out.println("})");
-            out.println("graph.add({");
-            out.println("id: '3',");
-            out.println("me: false,");
-            out.println("name: 'Vertex 4 : " + map.get(vertex++) + "'");
-            out.println("})");
-            out.println("graph.add({");
-            out.println("id: '4',");
-            out.println("me: false,");
-            out.println("name: 'Vertex 5 : " + map.get(vertex++) + "'");
-            out.println("})");
-            out.println("graph.add({");
-            out.println("id: '5',");
-            out.println("me: false,");
-            out.println("name: 'Vertex 6 : " + map.get(vertex++) + "'");
-            out.println("})");
+            Map<Integer, String> map_id = new HashMap<>();
+            for (String tmp_key : Graph_Declarations.map_vertices.keySet()) {
+                out.println("graph.add({");
+                out.println("id: '" + Graph_Declarations.map_vertices.get(tmp_key) + "' ,");
+                map_id.put(Graph_Declarations.map_vertices.get(tmp_key), tmp_key);
+                out.println("me: false,");
+                out.println("name: 'Vertex " + tmp_key + " : " + map.get(Graph_Declarations.map_vertices.get(tmp_key))
+                        + "'");
+                out.println(" })");
+            }
+            //            out.println("graph.add({");
+
+            //            out.println("id: '1',");
+            //            out.println("me: false,");
+            //            out.println("name: 'Vertex 2 : " + map.get(vertex++) + "'");
+            //            out.println("})");
+            //            out.println("graph.add({");
+            //            out.println("id: '2',");
+            //            out.println("me: false,");
+            //            out.println("name: 'Vertex 3 : " + map.get(vertex++) + "'");
+            //            out.println("})");
+            //            out.println("graph.add({");
+            //            out.println("id: '3',");
+            //            out.println("me: false,");
+            //            out.println("name: 'Vertex 4 : " + map.get(vertex++) + "'");
+            //            out.println("})");
+            //            out.println("graph.add({");
+            //            out.println("id: '4',");
+            //            out.println("me: false,");
+            //            out.println("name: 'Vertex 5 : " + map.get(vertex++) + "'");
+            //            out.println("})");
+            //            out.println("graph.add({");
+            //            out.println("id: '5',");
+            //            out.println("me: false,");
+            //            out.println("name: 'Vertex 6 : " + map.get(vertex++) + "'");
+            //            out.println("})");
 
             br = new BufferedReader(new FileReader(path));
             while ((line = br.readLine()) != null) {
                 String[] edges = line.split(" ");
-                out.println("graph.connect('" + edges[0] + "','" + edges[1] + "')");
+                out.println("graph.connect('" + Graph_Declarations.map_vertices.get(edges[0]) + "','"
+                        + Graph_Declarations.map_vertices.get(edges[1]) + "')");
             }
             //            out.println("graph.connect('0','1')");
             //            out.println("graph.connect('0','2')");
