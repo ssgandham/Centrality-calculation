@@ -48,8 +48,10 @@ class Graph {
     }
 
     public void edge_add(int src, int dest) {
-        if (!Graph_Declarations.adj[src].contains(dest))
+        if (!Graph_Declarations.adj[src].contains(dest)) {
             Graph_Declarations.adj[src].add(dest);
+            Graph_Declarations.adj[dest].add(src);
+        }
     }
 
     public void init(int src) {

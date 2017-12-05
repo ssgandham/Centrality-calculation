@@ -53,10 +53,9 @@ public class Calculate_Closeness_Centrality extends HttpServlet {
             while ((line = br.readLine()) != null) {
 
                 // use comma as separator
-                String[] edges = line.split(cvsSplitBy);
-
-                //                System.out.print("Country [code= " + country[0] + " , name=" + country[1] + "]");
-                g.edge_add(Integer.parseInt(edges[0]), Integer.parseInt(edges[1]));
+                String[] edges = line.split(" ");
+                g.edge_add(Graph_Declarations.map_vertices.get(edges[0]),
+                        Graph_Declarations.map_vertices.get(edges[1]));
             }
             g.traverse();
             g.closeness_centrality();
@@ -97,7 +96,8 @@ public class Calculate_Closeness_Centrality extends HttpServlet {
             br = new BufferedReader(new FileReader(path));
             while ((line = br.readLine()) != null) {
                 String[] edges = line.split(" ");
-                out.println("graph.connect('" + edges[0] + "','" + edges[1] + "')");
+                out.println("graph.connect('" + Graph_Declarations.map_vertices.get(edges[0]) + "','"
+                        + Graph_Declarations.map_vertices.get(edges[1]) + "')");
             }
             //            out.println("graph.connect('0','1')");
             //            out.println("graph.connect('0','2')");

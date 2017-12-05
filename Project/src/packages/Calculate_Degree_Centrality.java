@@ -53,10 +53,9 @@ public class Calculate_Degree_Centrality extends HttpServlet {
             while ((line = br.readLine()) != null) {
 
                 // use comma as separator
-                String[] edges = line.split(cvsSplitBy);
-
-                //                System.out.print("Country [code= " + country[0] + " , name=" + country[1] + "]");
-                g.edge_add(Integer.parseInt(edges[0]), Integer.parseInt(edges[1]));
+                String[] edges = line.split(" ");
+                g.edge_add(Graph_Declarations.map_vertices.get(edges[0]),
+                        Graph_Declarations.map_vertices.get(edges[1]));
             }
 
             //            response.sendRedirect("Display_Graph.jsp");
