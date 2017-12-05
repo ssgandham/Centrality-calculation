@@ -34,6 +34,7 @@ class Graph {
 
         shortest_path_dist = new int[v][v];
         closeness_centrality = new float[v];
+
         for (int i = 0; i < v; ++i) {
             adj[i] = new LinkedList<Integer>();
             pred[i] = new LinkedList<Integer>();
@@ -113,14 +114,17 @@ class Graph {
             shortest_path_dist[src] = dist;
         }
 
-        for (float cb_tmp : CB)
-            System.out.println(cb_tmp);
+        for (int i = 0; i < CB.length; i++) {
+            System.out.println(CB[i]);
+            Graph_Declarations.total_centrality[i] += CB[i];
+        }
     }
 
     public void degree_centrality() {
         for (int i = 0; i < adj.length; i++) {
             //            for (int tmp_list : adj[i])
             degree_centrality.put(i, adj[i].size());
+            Graph_Declarations.total_centrality[i] += adj[i].size();
         }
     }
 
@@ -134,8 +138,10 @@ class Graph {
         }
 
         System.out.println("Centrality");
-        for (int m = 0; m < V; m++)
+        for (int m = 0; m < V; m++) {
             System.out.println("m : " + closeness_centrality[m]);
+            Graph_Declarations.total_centrality[m] += closeness_centrality[m];
+        }
     }
 
     public static void main(String[] args) {
