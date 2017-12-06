@@ -39,8 +39,9 @@ public class Calculate_Degree_Centrality extends HttpServlet {
         Graph g = new Graph(Graph_Declarations.no_of_vertices);
 
         /*Reference : https://www.mkyong.com/java/how-to-read-and-parse-csv-file-in-java/*/
-        String path = request.getParameter("input_path");
-        System.out.print(path);
+        //String path = request.getParameter("input_path");
+        // System.out.pri
+        String path = Graph_Declarations.path;
 
         /*  String csvFile = "/Users/mkyong/csv/country.csv";*/
         BufferedReader br = null;

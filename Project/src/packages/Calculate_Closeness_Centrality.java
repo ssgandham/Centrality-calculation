@@ -39,8 +39,8 @@ public class Calculate_Closeness_Centrality extends HttpServlet {
         Graph g = new Graph(Graph_Declarations.no_of_vertices);
 
         /*Reference : https://www.mkyong.com/java/how-to-read-and-parse-csv-file-in-java/*/
-        Graph_Declarations.path = request.getParameter("input_path");
-        System.out.print(Graph_Declarations.path);
+        //        Graph_Declarations.path = request.getParameter("input_path");
+        //        System.out.print(Graph_Declarations.path);
 
         /*  String csvFile = "/Users/mkyong/csv/country.csv";*/
         BufferedReader br = null;
@@ -119,8 +119,8 @@ public class Calculate_Closeness_Centrality extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
 
-            for (float tmp : g.CB)
-                System.out.println(tmp);
+            //            for (float tmp : g.CB)
+            //                System.out.println(tmp);
 
         } catch (
 
