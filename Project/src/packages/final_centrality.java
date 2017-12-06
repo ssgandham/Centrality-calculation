@@ -59,7 +59,7 @@ public class final_centrality extends HttpServlet {
         out.println("<title>Betweenness Centrality</title>");
         out.println("<style>");
         out.println(".torrent-graph {");
-        out.println(" width: 200%;");
+        out.println(" width: 100%;");
         out.println("  height: 200%;");
         out.println("}");
         out.println("</style>");

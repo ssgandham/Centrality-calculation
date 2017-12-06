@@ -67,17 +67,17 @@ public class calculate_katz_centrality extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("<html>");
         out.println("<head>");
-        out.println("<title>Betweenness Centrality</title>");
+        out.println("<title>Katz Centrality</title>");
         out.println("<style>");
         out.println(".torrent-graph {");
-        out.println(" width: 200%;");
+        out.println(" width: 100%;");
         out.println("  height: 200%;");
         out.println("}");
         out.println("</style>");
         out.println("</head>");
 
         out.println("<body>");
-        out.println("<h2>Betweenness Centrality</h2>");
+        out.println("<h2>Katz Centrality</h2>");
         out.println("<div class=\"torrent-graph\"></div>");
 
         out.println("<script type=\"text/javascript\" src=\"./p2p-graph.min.js\"></script>");

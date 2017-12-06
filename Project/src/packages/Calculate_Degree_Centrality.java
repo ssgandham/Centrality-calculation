@@ -73,7 +73,7 @@ public class Calculate_Degree_Centrality extends HttpServlet {
             out.println("<title>Degree Centrality</title>");
             out.println("<style>");
             out.println(".torrent-graph {");
-            out.println(" width: 200%;");
+            out.println(" width: 100%;");
             out.println("  height: 200%;");
             out.println("}");
             out.println("</style>");
