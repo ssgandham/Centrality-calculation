@@ -50,10 +50,20 @@ public class final_centrality extends HttpServlet {
         //            g.closeness_centrality();
         //            response.sendRedirect("Display_Graph.jsp");
         Map<Integer, Float> map = new HashMap<>();
-        for (int i = 0; i < Graph_Declarations.total_centrality.length; i++)
+        float max_centrality = Float.MIN_VALUE;
+        int final_max_vertice = 0;
+        for (int i = 0; i < Graph_Declarations.total_centrality.length; i++) {
             map.put(i, Graph_Declarations.total_centrality[i]);
+            if (Graph_Declarations.total_centrality[i] > max_centrality) {
+                max_centrality = Graph_Declarations.total_centrality[i];
+                //                final_max_vertice = Graph_Declarations.map_vertices.get(i);
+                final_max_vertice = i;
+            }
+
+        }
         int vertex = 0;
         PrintWriter out = response.getWriter();
+
         out.println("<html>");
         out.println("<head>");
         out.println("<title>Betweenness Centrality</title>");
@@ -67,6 +77,7 @@ public class final_centrality extends HttpServlet {
 
         out.println("<body>");
         out.println("<h2>Betweenness Centrality</h2>");
+        out.println("<h2>Max Centrality " + final_max_vertice + " : " + max_centrality + "</h2>");
         out.println("<div class=\"torrent-graph\"></div>");
 
         out.println("<script type=\"text/javascript\" src=\"./p2p-graph.min.js\"></script>");
@@ -126,9 +137,7 @@ public class final_centrality extends HttpServlet {
         out.println("</script>");
         out.println("</body>");
         out.println("</html>");
-        System.out.println("Centrality");
-        for (int i = 0; i < Graph_Declarations.total_centrality.length; i++)
-            System.out.println(Graph_Declarations.total_centrality[i]);
+
     }
 
     /**
