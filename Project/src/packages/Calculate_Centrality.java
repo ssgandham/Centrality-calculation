@@ -58,14 +58,17 @@ public class Calculate_Centrality extends HttpServlet {
                 // use comma as separator
                 String[] edges = line.split(" ");
 
-                System.out.println("\nCountry [code= " + edges[0] + " , name=" + edges[1] + "]");
+                //                System.out.println("\nCountry [code= " + edges[0] + " , name=" + edges[1] + "]");
                 if (Graph_Declarations.map_vertices.get(edges[0]) == null) {
                     Graph_Declarations.map_vertices.put(edges[0], no_vertices++);
+                    Graph_Declarations.map_vertices_edges.put(no_vertices, edges[0]);
                     //                    System.out.println("Vertices :" + no_vertices++);
                 }
 
-                if (Graph_Declarations.map_vertices.get(edges[1]) == null)
+                if (Graph_Declarations.map_vertices.get(edges[1]) == null) {
                     Graph_Declarations.map_vertices.put(edges[1], no_vertices++);
+                    Graph_Declarations.map_vertices_edges.put(no_vertices, edges[1]);
+                }
                 //                g.edge_add(Integer.parseInt(edges[0]), Integer.parseInt(edges[1]));
             }
 
@@ -87,6 +90,7 @@ public class Calculate_Centrality extends HttpServlet {
                         Graph_Declarations.map_vertices.get(edges[1]));
             }
             g.traverse();
+            g.betweeness_centrality();
             //            g.closeness_centrality();
             //            response.sendRedirect("Display_Graph.jsp");
             Map<Integer, Float> map = new HashMap<>();
@@ -106,7 +110,7 @@ public class Calculate_Centrality extends HttpServlet {
             out.println("</head>");
 
             out.println("<body>");
-            out.println("<h2>Betweenness Centrality</h2>");
+            out.println("<center><h2>Betweenness Centrality</h2></center>");
             out.println("<div class=\"torrent-graph\"></div>");
 
             out.println("<script type=\"text/javascript\" src=\"./p2p-graph.min.js\"></script>");
@@ -180,8 +184,8 @@ public class Calculate_Centrality extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
 
-            for (float tmp : g.CB)
-                System.out.println(tmp);
+            //            for (float tmp : g.CB)
+            //                System.out.println(tmp);
 
         } catch (
 

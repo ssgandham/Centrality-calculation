@@ -10,9 +10,9 @@ class Graph {
     // Array  of lists for Adjacency List Representation
 
     static LinkedList<Integer> pred[];
-    Stack<Integer> st = new Stack<Integer>();
+    static Stack<Integer> st = new Stack<Integer>();
     static int sigma[], dist[];
-    Queue<Integer> q = new LinkedList<Integer>();
+    static Queue<Integer> q = new LinkedList<Integer>();
     int[] arr_dist = new int[100000];
     static int[][] shortest_path_dist;
     static float[] closeness_centrality;
@@ -55,7 +55,7 @@ class Graph {
         }
     }
 
-    public void init(int src) {
+    public static void init(int src) {
         //        adj = new LinkedList[V];
         pred = new LinkedList[V];
         //        CB = new float[V];
@@ -75,7 +75,7 @@ class Graph {
         sigma[src] = 1;
     }
 
-    public void traverse() {
+    public static void traverse() {
         for (int i = 0; i < V; i++) {
             int src = i;
             init(src);
@@ -115,8 +115,11 @@ class Graph {
             shortest_path_dist[src] = dist;
         }
 
+    }
+
+    public void betweeness_centrality() {
         for (int i = 0; i < CB.length; i++) {
-            System.out.println(CB[i]);
+            //            System.out.println(CB[i]);
             Graph_Declarations.total_centrality[i] += CB[i];
         }
     }
@@ -129,20 +132,20 @@ class Graph {
         }
     }
 
-    public void closeness_centrality() {
+    public static void closeness_centrality() {
         for (int i = 0; i < V; i++) {
             for (int j = 0; j < V; j++) {
                 closeness_centrality[i] += shortest_path_dist[i][j];
-                System.out.println("Before i : " + i + ":" + Graph_Declarations.katz_centrality[i]);
+                //                System.out.println("Before i : " + i + ":" + Graph_Declarations.katz_centrality[i]);
                 //                System.out.println("Degree Centrality j : " + (float) Graph_Declarations.degree_centrality.get(j));
                 //                System.out.println(
                 //                        "Power Centrality" + Math.pow(Graph_Declarations.katz_constant, shortest_path_dist[i][j]));
                 //                System.out.println("Shortest Path : " + shortest_path_dist[i][j]);
                 Graph_Declarations.katz_centrality[i] += ((float) Graph_Declarations.degree_centrality.get(j))
                         * Math.pow(Graph_Declarations.katz_constant, shortest_path_dist[i][j]);
-                System.out.println("After i : " + i + ":" + Graph_Declarations.katz_centrality[i]);
+                //                System.out.println("After i : " + i + ":" + Graph_Declarations.katz_centrality[i]);
             }
-            System.out.println("i:" + i + closeness_centrality[i]);
+            //            System.out.println("i:" + i + closeness_centrality[i]);
             closeness_centrality[i] = 1 / closeness_centrality[i];
         }
 
@@ -150,13 +153,16 @@ class Graph {
         for (int m = 0; m < V; m++) {
             //            System.out.println("m : " + closeness_centrality[m]);
             Graph_Declarations.total_centrality[m] += closeness_centrality[m];
-            Graph_Declarations.total_centrality[m] += Graph_Declarations.katz_centrality[m];
+            //            Graph_Declarations.total_centrality[m] += Graph_Declarations.katz_centrality[m];
         }
     }
 
-    //    public void Katz_Centrality() {
-    //        Graph_Declarations.katz_centrality[i] +=
-    //                ((float) degreeCentralities[j]) * Math.pow(katzConstant, shortestPathWeights[i][j]);
+    public static void Katz_Centrality() {
+        for (int m = 0; m < V; m++) {
+            //            Graph_Declarations.total_centrality[m] += closeness_centrality[m];
+            Graph_Declarations.total_centrality[m] += Graph_Declarations.katz_centrality[m];
+        }
+    }
     //    }
 
     public static void main(String[] args) {

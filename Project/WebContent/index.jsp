@@ -78,7 +78,7 @@ background-size: cover;
  <!-- <body background="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Graph_betweenness.svg/1024px-Graph_betweenness.svg.png">
  -->	 
  <body> 
- 	Popular Node using Centrality
+ 	<center><h1>Popular Node using Centrality</h1></center>
 	<div class="form">
 		<form action="Calculate_Centrality">
 			<!-- <input type="checkbox" name="Calculate_Centrality" value="weight"> -->

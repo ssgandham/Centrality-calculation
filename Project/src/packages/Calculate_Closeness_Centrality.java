@@ -36,7 +36,6 @@ public class Calculate_Closeness_Centrality extends HttpServlet {
             throws ServletException, IOException {
         // TODO Auto-generated method stub
         //		response.getWriter().append("Served at: ").append(request.getContextPath());
-        Graph g = new Graph(Graph_Declarations.no_of_vertices);
 
         /*Reference : https://www.mkyong.com/java/how-to-read-and-parse-csv-file-in-java/*/
         //        Graph_Declarations.path = request.getParameter("input_path");
@@ -48,21 +47,21 @@ public class Calculate_Closeness_Centrality extends HttpServlet {
         String cvsSplitBy = " ";
 
         try {
-
-            br = new BufferedReader(new FileReader(Graph_Declarations.path));
-            while ((line = br.readLine()) != null) {
-
-                // use comma as separator
-                String[] edges = line.split(" ");
-                g.edge_add(Graph_Declarations.map_vertices.get(edges[0]),
-                        Graph_Declarations.map_vertices.get(edges[1]));
-            }
-            g.traverse();
-            g.closeness_centrality();
+            //
+            //            br = new BufferedReader(new FileReader(Graph_Declarations.path));
+            //            while ((line = br.readLine()) != null) {
+            //
+            //                // use comma as separator
+            //                String[] edges = line.split(" ");
+            //                g.edge_add(Graph_Declarations.map_vertices.get(edges[0]),
+            //                        Graph_Declarations.map_vertices.get(edges[1]));
+            //            }
+            Graph.traverse();
+            Graph.closeness_centrality();
             //            response.sendRedirect("Display_Graph.jsp");
             Map<Integer, Float> map = new HashMap<>();
-            for (int i = 0; i < g.closeness_centrality.length; i++)
-                map.put(i, g.closeness_centrality[i]);
+            for (int i = 0; i < Graph.closeness_centrality.length; i++)
+                map.put(i, Graph.closeness_centrality[i]);
             int vertex = 0;
             PrintWriter out = response.getWriter();
             out.println("<html>");
@@ -77,7 +76,7 @@ public class Calculate_Closeness_Centrality extends HttpServlet {
             out.println("</head>");
 
             out.println("<body>");
-            out.println("<h2>Closeness Centrality</h2>");
+            out.println("<center><h2>Closeness Centrality</h2></center>");
             out.println("<div class=\"torrent-graph\"></div>");
 
             out.println("<script type=\"text/javascript\" src=\"./p2p-graph.min.js\"></script>");

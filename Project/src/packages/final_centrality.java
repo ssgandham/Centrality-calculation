@@ -52,7 +52,7 @@ public class final_centrality extends HttpServlet {
         Map<Integer, Float> map = new HashMap<>();
         float max_centrality = Float.MIN_VALUE;
         int final_max_vertice = 0;
-        for (int i = 0; i < Graph_Declarations.total_centrality.length; i++) {
+        for (int i = 0; i < Graph_Declarations.no_of_vertices; i++) {
             map.put(i, Graph_Declarations.total_centrality[i]);
             if (Graph_Declarations.total_centrality[i] > max_centrality) {
                 max_centrality = Graph_Declarations.total_centrality[i];
@@ -66,7 +66,7 @@ public class final_centrality extends HttpServlet {
 
         out.println("<html>");
         out.println("<head>");
-        out.println("<title>Betweenness Centrality</title>");
+        out.println("<title>Total Centrality</title>");
         out.println("<style>");
         out.println(".torrent-graph {");
         out.println(" width: 100%;");
@@ -76,8 +76,11 @@ public class final_centrality extends HttpServlet {
         out.println("</head>");
 
         out.println("<body>");
-        out.println("<h2>Betweenness Centrality</h2>");
-        out.println("<h2>Max Centrality " + final_max_vertice + " : " + max_centrality + "</h2>");
+        out.println("<center><h2>Total Centrality</h2></center>");
+        //        out.println("<marquee behavior=scroll direction=\"left\" scrollamount=\"10\"><h2>Max Centrality is for Vertex"
+        //                + final_max_vertice + " : " + max_centrality + "</h2></marquee>");
+        //        out.println("<marquee behavior=scroll direction=\"left\" scrollamount=\"10\"><h2>Max Centrality is for Vertex"
+        //                + final_max_vertice + "</h2></marquee>");
         out.println("<div class=\"torrent-graph\"></div>");
 
         out.println("<script type=\"text/javascript\" src=\"./p2p-graph.min.js\"></script>");

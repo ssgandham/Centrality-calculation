@@ -80,7 +80,7 @@ public class Calculate_Degree_Centrality extends HttpServlet {
             out.println("</head>");
 
             out.println("<body>");
-            out.println("<h2>Degree Centrality</h2>");
+            out.println("<center><h2>Degree Centrality</h2></center>");
             out.println("<div class=\"torrent-graph\"></div>");
 
             out.println("<script type=\"text/javascript\" src=\"./p2p-graph.min.js\"></script>");

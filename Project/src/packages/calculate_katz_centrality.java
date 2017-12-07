@@ -60,6 +60,7 @@ public class calculate_katz_centrality extends HttpServlet {
         //            g.traverse();
         //            g.closeness_centrality();
         //            response.sendRedirect("Display_Graph.jsp");
+        Graph.Katz_Centrality();
         Map<Integer, Float> map = new HashMap<>();
         for (int i = 0; i < Graph_Declarations.katz_centrality.length; i++)
             map.put(i, Graph_Declarations.katz_centrality[i]);
@@ -77,7 +78,7 @@ public class calculate_katz_centrality extends HttpServlet {
         out.println("</head>");
 
         out.println("<body>");
-        out.println("<h2>Katz Centrality</h2>");
+        out.println("<center><h2>Katz Centrality</h2></center>");
         out.println("<div class=\"torrent-graph\"></div>");
 
         out.println("<script type=\"text/javascript\" src=\"./p2p-graph.min.js\"></script>");
