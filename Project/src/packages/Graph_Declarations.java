@@ -13,7 +13,7 @@ public class Graph_Declarations {
     static Map<Integer, Integer> degree_centrality = new HashMap<>();
     static float[] katz_centrality;
     public static String path = "";
-    static float katz_constant = 3;
+    static float katz_constant = (float) 0.5;
     //    static String input_path = "";
 
     Graph_Declarations(int vertices) {

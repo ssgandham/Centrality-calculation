@@ -77,8 +77,8 @@ public class final_centrality extends HttpServlet {
 
         out.println("<body>");
         out.println("<center><h2>Total Centrality</h2></center>");
-        //        out.println("<marquee behavior=scroll direction=\"left\" scrollamount=\"10\"><h2>Max Centrality is for Vertex"
-        //                + final_max_vertice + " : " + max_centrality + "</h2></marquee>");
+        out.println("<marquee behavior=scroll direction=\"left\" scrollamount=\"10\"><h2>Max Centrality is for Vertex"
+                + final_max_vertice + " : " + max_centrality + "</h2></marquee>");
         //        out.println("<marquee behavior=scroll direction=\"left\" scrollamount=\"10\"><h2>Max Centrality is for Vertex"
         //                + final_max_vertice + "</h2></marquee>");
         out.println("<div class=\"torrent-graph\"></div>");
